@@ -1,0 +1,19 @@
+<head>
+  <title>hoponmytaxi</title>
+</head>
+
+<body>
+  <h1>hoponmytaxi</h1>
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <p>Here is supposed to be the map and stuff.</p>
+  <p>Under construction...</p>
+
+  <ul>
+    {{#each ride in rides}}
+      <li>{{ride.bkn_ref}}</li>
+    {{/each}}
+  </ul>
+</template>
