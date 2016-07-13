@@ -3,8 +3,15 @@
 </head>
 
 <body>
-  <h1>hoponmytaxi</h1>
-  {{> hello}}
+  <table>
+    <tr>
+      <td><h1>hoponmytaxi</h1></td>
+      <td style="text-align: right">{{> loginButtons}}</td>
+    </tr>
+  </table>
+  {{#if currentUser}}
+    {{> hello}}
+  {{/if}}
 </body>
 
 <template name="hello">

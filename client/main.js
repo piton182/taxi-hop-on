@@ -1,13 +1,23 @@
 import { Template } from 'meteor/templating';
-// import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
 import { Rides } from '../both/rides.js'
 
+Template.whoami.onCreated(function helloOnCreated() {
+
+});
+
+Template.whoami.helpers({
+  me() {
+    return Meteor.user().emails[0].address;
+  },
+});
+
+
+
 Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  // this.counter = new ReactiveVar(0);
+
 });
 
 Template.hello.helpers({
