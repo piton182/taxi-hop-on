@@ -54,8 +54,10 @@
              </tr>
              <tr>
                <td colspan="2">
+                 <!-- TODO: Possible to click <Join> more than once; or more than 1 person to join the ride. -->
+                 <!-- TODO: make <Join> disabled if the ride is already "full" or the user already joined this ride. -->
                  {{#if currentUser}}
-                   <button>Join</button>
+                   <button class="js-ride-join">Join</button>
                  {{else}}
                    <span>(Sign in to join)</span>
                    <button disabled="true">Join</button>

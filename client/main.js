@@ -18,7 +18,7 @@ Template.hello.helpers({
   },
   selectedRide() {
     const instance = Template.instance();
-    return instance.state.get('selectedRide');
+    return Rides.findOne({_id: instance.state.get('selectedRide')._id})
   }
 });
 
@@ -26,7 +26,6 @@ Template.hello.events({
   'click .js-ride-join'(event, instance) {
     if (Meteor.user()) {
       const username = Meteor.user().emails[0].address;
-
       Rides.update(
         {_id: instance.state.get('selectedRide')._id },
         { $set: { coriders: username } }
