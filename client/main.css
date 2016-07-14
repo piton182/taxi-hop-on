@@ -1,1 +1,11 @@
-/* CSS declarations go here */
+.container {
+  display: flex;
+}
+
+.rideDetailsTable {
+  width: 100%;
+}
+
+.rideDetailsTable td {
+  text-align: right;
+}

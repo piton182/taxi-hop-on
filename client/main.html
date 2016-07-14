@@ -9,20 +9,66 @@
       <td style="text-align: right">{{> loginButtons}}</td>
     </tr>
   </table>
-  {{#if currentUser}}
-    {{> hello}}
-  {{/if}}
+  {{> hello}}
 </body>
 
 <template name="hello">
-  <p>Here is supposed to be the map and stuff.</p>
-  <p>Under construction...</p>
-
-  <ul>
-    {{#each ride in rides}}
-      {{#with ride}}
-        <li>{{bkn_ref}} <a href="#" class="js-ride-join">Join</a></li>
-      {{/with}}
-    {{/each}}
-  </ul>
+  <div class="container">
+    <div style="border: 1px solid blue; padding: 10px;">
+      <ul>
+        {{#each ride in rides}}
+          {{#with ride}} <!-- TODO: use {{#let ... }} instead of {{#with ... }}. Everywhere! -->
+            <li class="ride-time" style="background-color: yellow;"><a href="#">{{bkn_ref}}</a></li>
+          {{/with}}
+        {{/each}}
+      </ul>
+    </div>
+    {{#if selectedRide}}
+      {{#let ride=selectedRide}}
+        <div style="border: 1px solid red; padding: 10px;">
+           <h3>Ride #{{ride.bkn_ref}}</h3>
+           <table class="rideDetailsTable">
+             <tr>
+               <td>Name</td>
+               <td>{{ride.name}}</td>
+             </tr>
+             <tr>
+               <td>Phone</td>
+               <td>{{ride.phone}}</td>
+             </tr>
+             <tr>
+               <td>Date/time</td>
+               <td>{{ride.datetime}}</td>
+             </tr>
+             <tr>
+               <td>From</td>
+               <td>{{ride.from}}</td>
+             </tr>
+             <tr>
+               <td>To</td>
+               <td>{{ride.to}}</td>
+             </tr>
+             <tr>
+               <td>Co-riders</td>
+               <td>{{ride.coriders}}</td>
+             </tr>
+             <tr>
+               <td colspan="2">
+                 {{#if currentUser}}
+                   <button>Join</button>
+                 {{else}}
+                   <span>(Sign in to join)</span>
+                   <button disabled="true">Join</button>
+                 {{/if}}
+               </td>
+             </tr>
+           </table>
+        </div>
+      {{/let}}
+    {{else}}
+      <div style="border: 1px solid red; padding: 10px;">
+        <span>Select a ride</span>
+      </div>
+    {{/if}}
+  </div>
 </template>
