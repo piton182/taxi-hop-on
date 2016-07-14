@@ -1,20 +1,7 @@
 import { Template } from 'meteor/templating';
-
-import './main.html';
-
 import { Rides } from '../both/rides.js'
 
-Template.whoami.onCreated(function helloOnCreated() {
-
-});
-
-Template.whoami.helpers({
-  me() {
-    return Meteor.user().emails[0].address;
-  },
-});
-
-
+import './main.html';
 
 Template.hello.onCreated(function helloOnCreated() {
 
@@ -24,14 +11,13 @@ Template.hello.helpers({
   rides() {
     return Rides.find({});
   },
-  counter() {
-    return Template.instance().counter.get();
-  },
 });
 
 Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+  'click .js-ride-join'(event, instance) {
+    if (Meteor.user()) {
+      const username = Meteor.user().emails[0].address;
+      Rides.update({_id: this._id}, {$set: {coriders: username}})
+    }
+  }
 });

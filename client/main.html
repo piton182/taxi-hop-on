@@ -5,7 +5,7 @@
 <body>
   <table>
     <tr>
-      <td><h1>hoponmytaxi</h1></td>
+      <td><h1>hop-on-my-taxi</h1></td>
       <td style="text-align: right">{{> loginButtons}}</td>
     </tr>
   </table>
@@ -20,7 +20,9 @@
 
   <ul>
     {{#each ride in rides}}
-      <li>{{ride.bkn_ref}}</li>
+      {{#with ride}}
+        <li>{{bkn_ref}} <a href="#" class="js-ride-join">Join</a></li>
+      {{/with}}
     {{/each}}
   </ul>
 </template>
