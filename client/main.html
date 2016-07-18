@@ -23,7 +23,7 @@
     {{/if}}
   </div>
   <div class="container">
-    <div style="border: 1px solid blue; padding: 10px;">
+    <div style="border: 1px solid blue; padding: 10px; min-width: 250px">
       {{#if isRidesEmpty}}
         <span style="color: orange">No available rides for given params...</span>
       {{else}}
@@ -35,7 +35,7 @@
         </ul>
       {{/if}}
     </div>
-    <div style="border: 1px solid red; padding: 10px;">
+    <div style="border: 1px solid red; padding: 10px; min-width: 200px">
       {{#if selectedRide}}
         {{#let ride=selectedRide}}
           <div>
