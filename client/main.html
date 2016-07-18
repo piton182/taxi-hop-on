@@ -15,8 +15,10 @@
   <div class="container">
     <div style="border: 1px solid blue; padding: 10px;">
       <ul>
-        {{#each ride in rides}}
-          <li class="ride-item" style="background-color: white;"><a href="#">{{ride.bkn_ref}}</a></li>  
+        {{#each rides}}
+        <!-- {{#let name=ride._id}} -->
+          <li class="ride-item" style="background-color: white;"><a href="#">{{bkn_ref}}</a></li>  
+        <!-- {{/let}} -->
         {{/each}}
       </ul>
     </div>
