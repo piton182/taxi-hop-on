@@ -7,5 +7,8 @@ Meteor.startup(() => {
 });
 
 Meteor.publish('rides', function ridesPublication() {
-  return Rides.find();
+  // TODO: if coriders is null (instead of empty string), this query woun't match it
+  return Rides.find({
+    coriders: ''
+  });
 });

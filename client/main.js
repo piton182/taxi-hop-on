@@ -18,6 +18,9 @@ Template.hello.helpers({
   rides() {
     return Rides.find({});
   },
+  isRidesEmpty() {
+    return Rides.find({}).count() == 0;
+  },
   selectedRide() {
     const instance = Template.instance();
     const selectedRideFromState = instance.state.get('selectedRide');

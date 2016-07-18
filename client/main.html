@@ -14,10 +14,12 @@
 <template name="hello">
   <div class="container">
     <div style="border: 1px solid blue; padding: 10px;">
+      {{#if isRidesEmpty}}
+        <span style="color: orange">No available rides for given params...</span>
+      {{/if}}
       <ul>
         {{#each rides}}
           <li class="ride-item" style="{{selectedRideClass _id}}"><a href="#">{{bkn_ref}}</a></li>
-
         {{/each}}
       </ul>
     </div>
@@ -69,7 +71,9 @@
         {{/let}}
       {{else}}
         <div>
-          <span>Select a ride</span>
+          {{#unless isRidesEmpty}}
+            <span>Select a ride</span>
+          {{/unless}}
         </div>
       {{/if}}
     </div>
