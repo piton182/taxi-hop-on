@@ -18,7 +18,7 @@
       <span style="color: orange">You have no active rides at the moment</span>
     {{else}}
       {{#each myRides}}
-        <span><a href="#" class="js-pick-from-my-rides">{{bkn_ref}}</a>&nbsp;|&nbsp;</span>
+        <span style="{{selectedRideStyle _id}}"><a href="#" class="js-pick-from-my-rides">{{bkn_ref}}</a>&nbsp;|&nbsp;</span>
       {{/each}}
     {{/if}}
   </div>
@@ -30,7 +30,7 @@
         <span>Open rides:</span>
         <ul>
           {{#each rides}}
-            <li class="ride-item" style="{{selectedRideClass _id}}"><a href="#">{{bkn_ref}}</a></li>
+            <li class="ride-item" style="{{selectedRideStyle _id}}"><a href="#">{{bkn_ref}}</a></li>
           {{/each}}
         </ul>
       {{/if}}

@@ -44,7 +44,7 @@ Template.hello.helpers({
     const selectedRideFromState = instance.state.get('selectedRide');
     return (selectedRideFromState) ? Rides.findOne({_id: selectedRideFromState._id}) : null;
   },
-  selectedRideClass(rideId) {
+  selectedRideStyle(rideId) {
     const instance = Template.instance();
     const selectedRideFromState = instance.state.get('selectedRide')
     if (selectedRideFromState) {
