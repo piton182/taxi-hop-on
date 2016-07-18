@@ -27,6 +27,7 @@ Template.hello.events({
   'click .js-ride-join'(event, instance) {
     if (Meteor.user()) {
       const username = Meteor.user().emails[0].address;
+      // TODO: here update happens without checking with back-end (the ride might've been deleted/become not available to join)
       Rides.update(
         {_id: instance.state.get('selectedRide')._id },
         { $set: { coriders: username } }
