@@ -17,16 +17,10 @@ Template.hello.onCreated(function helloOnCreated() {
 
 Template.hello.helpers({
   rides() {
-    return Rides.find({
-      // TODO: if coriders is null (instead of empty string), this query woun't match it
-      coriders: ''
-    });
+    return Rides.find({$or: [{coriders: ''}, {coriders: null}]});
   },
   isRidesEmpty() {
-    return Rides.find({
-      // TODO: if coriders is null (instead of empty string), this query woun't match it
-      coriders: ''
-    }).count() == 0;
+    return Rides.find({$or: [{coriders: ''}, {coriders: null}]}).count() == 0;
   },
   myRides() {
     // TODO: Meteor.user() is sometimes not available by the time this helper executes; that's why this ugly if here
