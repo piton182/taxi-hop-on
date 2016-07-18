@@ -32,7 +32,7 @@ Template.hello.events({
       );
     }
   },
-  'click .ride-time'(event, instance) {
+  'click .ride-item'(event, instance) {
     instance.state.set('selectedRide', this);
   }
 });
