@@ -12,3 +12,16 @@ Meteor.publish('rides', function ridesPublication() {
     coriders: ''
   });
 });
+
+Meteor.publish('myRides', function myRidesPublication() {
+  const currentUser = Meteor.users.findOne(this.userId);
+  // TODO: if coriders is null (instead of empty string), this query woun't match it
+  if (this.userId) {
+    return Rides.find({
+      coriders: currentUser.emails[0].address
+    });
+  } else {
+    return null;
+  }
+  // return null;
+});

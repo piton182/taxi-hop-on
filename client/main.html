@@ -13,6 +13,16 @@
 </head>
 <template name="hello">
   <div class="container">
+    <span>My rides:&nbsp;</span>
+    {{#if isMyRidesEmpty}}
+      <span style="color: orange">You have no active rides at the moment</span>
+    {{else}}
+      {{#each myRides}}
+        <span><a href="#" class="js-pick-from-my-rides">{{bkn_ref}}</a>&nbsp;|&nbsp;</span>
+      {{/each}}
+    {{/if}}
+  </div>
+  <div class="container">
     <div style="border: 1px solid blue; padding: 10px;">
       {{#if isRidesEmpty}}
         <span style="color: orange">No available rides for given params...</span>
@@ -24,7 +34,6 @@
       </ul>
     </div>
     <div style="border: 1px solid red; padding: 10px;">
-      <span><a href="#">My active ride</a></span>
       {{#if selectedRide}}
         {{#let ride=selectedRide}}
           <div>
@@ -59,7 +68,11 @@
                    <!-- TODO: Possible to click <Join> more than once; or more than 1 person to join the ride. -->
                    <!-- TODO: make <Join> disabled if the ride is already "full" or the user already joined this ride. -->
                    {{#if currentUser}}
-                     <button class="js-ride-join">Join</button>
+                     {{#if isSelectedRideMine}}
+                       <span style="color: lightgreen">Joined</span>
+                     {{else}}
+                       <button class="js-ride-join">Join</button>
+                     {{/if}}
                    {{else}}
                      <span>(Sign in to join)</span>
                      <button disabled="true">Join</button>
