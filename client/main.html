@@ -17,7 +17,8 @@
     <div style="border: 1px solid blue; padding: 10px;">
       <ul>
         {{#each ride in rides}}
-          {{#with ride}} <!-- TODO: use {{#let ... }} instead of {{#with ... }}. Everywhere! -->
+          <!-- TODO: use {{#let ... }} instead of {{#with ... }}. Everywhere! -->
+          {{#with ride}}
             <li class="ride-time" style="background-color: yellow;"><a href="#">{{bkn_ref}}</a></li>
           {{/with}}
         {{/each}}
