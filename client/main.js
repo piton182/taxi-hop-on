@@ -14,6 +14,7 @@ Template.hello.onCreated(function helloOnCreated() {
 
 Template.hello.helpers({
   rides() {
+    console.log("hi")
     return Rides.find({});
   },
   selectedRide() {

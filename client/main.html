@@ -1,7 +1,3 @@
-<head>
-  <title>hoponmytaxi</title>
-</head>
-
 <body>
   <table>
     <tr>
@@ -9,18 +5,18 @@
       <td style="text-align: right">{{> loginButtons}}</td>
     </tr>
   </table>
-  {{> hello}}
+  {{> hello }}
 </body>
 
+<head>
+  <title>hoponmytaxi</title>
+</head>
 <template name="hello">
   <div class="container">
     <div style="border: 1px solid blue; padding: 10px;">
       <ul>
         {{#each ride in rides}}
-          <!-- TODO: use {{#let ... }} instead of {{#with ... }}. Everywhere! -->
-          {{#with ride}}
-            <li class="ride-time" style="background-color: yellow;"><a href="#">{{bkn_ref}}</a></li>
-          {{/with}}
+          <li class="ride-item" style="background-color: white;"><a href="#">{{ride.bkn_ref}}</a></li>  
         {{/each}}
       </ul>
     </div>
