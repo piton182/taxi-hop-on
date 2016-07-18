@@ -27,6 +27,7 @@
       {{#if isRidesEmpty}}
         <span style="color: orange">No available rides for given params...</span>
       {{/if}}
+      <span>Open rides:</span>
       <ul>
         {{#each rides}}
           <li class="ride-item" style="{{selectedRideClass _id}}"><a href="#">{{bkn_ref}}</a></li>

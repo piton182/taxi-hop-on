@@ -60,7 +60,9 @@ Template.hello.helpers({
     }
   },
   isSelectedRideMine() {
-    return true;
+    const instance = Template.instance();
+    const selectedRideFromState = instance.state.get('selectedRide');
+    return (selectedRideFromState.coriders === Meteor.user().emails[0].address);
   },
 });
 
