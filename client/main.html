@@ -26,13 +26,14 @@
     <div style="border: 1px solid blue; padding: 10px;">
       {{#if isRidesEmpty}}
         <span style="color: orange">No available rides for given params...</span>
+      {{else}}
+        <span>Open rides:</span>
+        <ul>
+          {{#each rides}}
+            <li class="ride-item" style="{{selectedRideClass _id}}"><a href="#">{{bkn_ref}}</a></li>
+          {{/each}}
+        </ul>
       {{/if}}
-      <span>Open rides:</span>
-      <ul>
-        {{#each rides}}
-          <li class="ride-item" style="{{selectedRideClass _id}}"><a href="#">{{bkn_ref}}</a></li>
-        {{/each}}
-      </ul>
     </div>
     <div style="border: 1px solid red; padding: 10px;">
       {{#if selectedRide}}

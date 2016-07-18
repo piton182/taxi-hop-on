@@ -76,6 +76,7 @@ Template.hello.events({
         {_id: instance.state.get('selectedRide')._id },
         { $set: { coriders: username } }
       );
+      instance.state.set('selectedRide', Rides.find({_id: this._id}));
     }
   },
   'click .ride-item'(event, instance) {
