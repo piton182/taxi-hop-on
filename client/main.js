@@ -24,7 +24,7 @@ Template.hello.helpers({
   selectedRideClass(rideId) {
     const instance = Template.instance();
     const selectedRideFromState = instance.state.get('selectedRide')
-    return (selectedRideFromState && selectedRideFromState._id.equals(rideId)) ? "background-color: yellow" : "";
+    return (selectedRideFromState && selectedRideFromState._id === rideId) ? "background-color: yellow" : "";
   },
 });
 
