@@ -21,54 +21,57 @@
         {{/each}}
       </ul>
     </div>
-    {{#if selectedRide}}
-      {{#let ride=selectedRide}}
-        <div style="border: 1px solid red; padding: 10px;">
-           <h3>Ride #{{ride.bkn_ref}}</h3>
-           <table class="rideDetailsTable">
-             <tr>
-               <td>Name</td>
-               <td>{{ride.name}}</td>
-             </tr>
-             <tr>
-               <td>Phone</td>
-               <td>{{ride.phone}}</td>
-             </tr>
-             <tr>
-               <td>Date/time</td>
-               <td>{{ride.datetime}}</td>
-             </tr>
-             <tr>
-               <td>From</td>
-               <td>{{ride.from}}</td>
-             </tr>
-             <tr>
-               <td>To</td>
-               <td>{{ride.to}}</td>
-             </tr>
-             <tr>
-               <td>Co-riders</td>
-               <td>{{ride.coriders}}</td>
-             </tr>
-             <tr>
-               <td colspan="2">
-                 <!-- TODO: Possible to click <Join> more than once; or more than 1 person to join the ride. -->
-                 <!-- TODO: make <Join> disabled if the ride is already "full" or the user already joined this ride. -->
-                 {{#if currentUser}}
-                   <button class="js-ride-join">Join</button>
-                 {{else}}
-                   <span>(Sign in to join)</span>
-                   <button disabled="true">Join</button>
-                 {{/if}}
-               </td>
-             </tr>
-           </table>
+    <div style="border: 1px solid red; padding: 10px;">
+      <span><a href="#">My active ride</a></span>
+      {{#if selectedRide}}
+        {{#let ride=selectedRide}}
+          <div>
+             <h3>Ride #{{ride.bkn_ref}}</h3>
+             <table class="rideDetailsTable">
+               <tr>
+                 <td>Name</td>
+                 <td>{{ride.name}}</td>
+               </tr>
+               <tr>
+                 <td>Phone</td>
+                 <td>{{ride.phone}}</td>
+               </tr>
+               <tr>
+                 <td>Date/time</td>
+                 <td>{{ride.datetime}}</td>
+               </tr>
+               <tr>
+                 <td>From</td>
+                 <td>{{ride.from}}</td>
+               </tr>
+               <tr>
+                 <td>To</td>
+                 <td>{{ride.to}}</td>
+               </tr>
+               <tr>
+                 <td>Co-riders</td>
+                 <td>{{ride.coriders}}</td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+                   <!-- TODO: Possible to click <Join> more than once; or more than 1 person to join the ride. -->
+                   <!-- TODO: make <Join> disabled if the ride is already "full" or the user already joined this ride. -->
+                   {{#if currentUser}}
+                     <button class="js-ride-join">Join</button>
+                   {{else}}
+                     <span>(Sign in to join)</span>
+                     <button disabled="true">Join</button>
+                   {{/if}}
+                 </td>
+               </tr>
+             </table>
+          </div>
+        {{/let}}
+      {{else}}
+        <div>
+          <span>Select a ride</span>
         </div>
-      {{/let}}
-    {{else}}
-      <div style="border: 1px solid red; padding: 10px;">
-        <span>Select a ride</span>
-      </div>
-    {{/if}}
+      {{/if}}
+    </div>
   </div>
 </template>

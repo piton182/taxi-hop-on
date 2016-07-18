@@ -6,6 +6,8 @@ import { Rides } from '../both/rides.js'
 import './main.html';
 
 Template.hello.onCreated(function helloOnCreated() {
+  Meteor.subscribe('rides');
+
   this.state = new ReactiveDict()
   this.state.setDefault({
     // selectedRide: {...},
