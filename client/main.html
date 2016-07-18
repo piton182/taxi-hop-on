@@ -16,9 +16,8 @@
     <div style="border: 1px solid blue; padding: 10px;">
       <ul>
         {{#each rides}}
-        <!-- {{#let name=ride._id}} -->
-          <li class="ride-item" style="background-color: white;"><a href="#">{{bkn_ref}}</a></li>  
-        <!-- {{/let}} -->
+          <li class="ride-item" style="{{selectedRideClass _id}}"><a href="#">{{bkn_ref}}</a></li>
+
         {{/each}}
       </ul>
     </div>

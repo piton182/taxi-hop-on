@@ -14,13 +14,18 @@ Template.hello.onCreated(function helloOnCreated() {
 
 Template.hello.helpers({
   rides() {
-    console.log("hi")
     return Rides.find({});
   },
   selectedRide() {
     const instance = Template.instance();
-    return Rides.findOne({_id: instance.state.get('selectedRide')._id})
-  }
+    const selectedRideFromState = instance.state.get('selectedRide');
+    return (selectedRideFromState) ? Rides.findOne({_id: selectedRideFromState._id}) : null;
+  },
+  selectedRideClass(rideId) {
+    const instance = Template.instance();
+    const selectedRideFromState = instance.state.get('selectedRide')
+    return (selectedRideFromState && selectedRideFromState._id.equals(rideId)) ? "background-color: yellow" : "";
+  },
 });
 
 Template.hello.events({
