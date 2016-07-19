@@ -8,9 +8,7 @@ Meteor.startup(() => {
 
 Meteor.publish('rides', function ridesPublication() {
   // TODO: if coriders is null (instead of empty string), this query woun't match it
-  return Rides.find({
-    coriders: ''
-  });
+  return Rides.find({$or: [{coriders: ''}, {coriders: null}]});
 });
 
 Meteor.publish('myRides', function myRidesPublication() {
