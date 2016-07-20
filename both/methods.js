@@ -19,7 +19,7 @@ Meteor.methods(
       console.info('User <' + Meteor.user()._id + '> is joining ride <' + rideId + '>.');
       const username = Meteor.user().emails[0].address;
       Rides.update(
-        {_id: rideId },
+        { _id: rideId },
         { $set: { coriders: username } }
       );
 

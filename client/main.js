@@ -76,12 +76,11 @@ Template.hello.events({
     if (Meteor.user()) {
       Meteor.call('rides.join', { rideId: instance.state.get('selectedRide')._id },
         (err, res) => {
-          console.log('b:' + Rides.find().count());
+          instance.state.set('selectedRide', Rides.findOne({_id: this._id}));
         }
       );
     }
-    console.log('a:' + Rides.findOne({_id: this._id}));
-    instance.state.set('selectedRide', Rides.find({_id: this._id}).fetch());
+    // instance.state.set('selectedRide', Rides.find({_id: this._id}).fetch());
   },
   'click .ride-item'(event, instance) {
     instance.state.set('selectedRide', this);

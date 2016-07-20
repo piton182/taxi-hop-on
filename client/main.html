@@ -39,33 +39,33 @@
     </div>
     <div style="border: 1px solid red; padding: 10px; min-width: 200px">
       {{#if selectedRide}}
-        {{#let ride=selectedRide}}
+        {{#with selectedRide}}
           <div>
-             <h3>Ride #{{ride.bkn_ref}}</h3>
+             <h3>Ride #{{bkn_ref}}</h3>
              <table class="rideDetailsTable">
                <tr>
                  <td>Name</td>
-                 <td>{{ride.name}}</td>
+                 <td>{{name}}</td>
                </tr>
                <tr>
                  <td>Phone</td>
-                 <td>{{ride.phone}}</td>
+                 <td>{{phone}}</td>
                </tr>
                <tr>
                  <td>Date/time</td>
-                 <td>{{ride.datetime}}</td>
+                 <td>{{datetime}}</td>
                </tr>
                <tr>
                  <td>From</td>
-                 <td>{{ride.from}}</td>
+                 <td>{{from}}</td>
                </tr>
                <tr>
                  <td>To</td>
-                 <td>{{ride.to}}</td>
+                 <td>{{to}}</td>
                </tr>
                <tr>
                  <td>Co-riders</td>
-                 <td>{{ride.coriders}}</td>
+                 <td>{{coriders}}</td>
                </tr>
                <tr>
                  <td colspan="2">
@@ -85,7 +85,7 @@
                </tr>
              </table>
           </div>
-        {{/let}}
+        {{/with}}
       {{else}}
         <div>
           {{#unless isRidesEmpty}}
