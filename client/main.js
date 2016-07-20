@@ -32,6 +32,15 @@ Template.hello.helpers({
       return null;
     }
   },
+  isMyRidesEmpty() {
+    if (Meteor.user()) {
+      return Rides.find({
+        coriders: Meteor.user().emails[0].address
+      }).count() === 0;
+    } else {
+      return null;
+    }
+  },
 
   selectedRide() {
     const instance = Template.instance();
