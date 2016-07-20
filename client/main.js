@@ -17,10 +17,12 @@ Template.hello.onCreated(function helloOnCreated() {
 
 Template.hello.helpers({
   rides() {
-    return Rides.find({$or: [{coriders: ''}, {coriders: null}]});
+    // TODO: $exists ?
+    return Rides.find({coriders: null});
   },
   isRidesEmpty() {
-    return Rides.find({$or: [{coriders: ''}, {coriders: null}]}).count() == 0;
+    // TODO: $exists ?
+    return Rides.find({coriders: null}).count() == 0;
   },
   myRides() {
     // TODO: Meteor.user() is sometimes not available by the time this helper executes; that's why this ugly if here
@@ -72,13 +74,7 @@ Template.hello.helpers({
 Template.hello.events({
   'click .js-ride-join'(event, instance) {
     if (Meteor.user()) {
-      // TODO: Meteor.user().emails[0].address - user name is an email address so far; a user must have a username, so far they don't
-      const username = Meteor.user().emails[0].address;
-      // TODO: here update happens without checking with back-end (the ride might've been deleted/become not available to join)
-      Rides.update(
-        {_id: instance.state.get('selectedRide')._id },
-        { $set: { coriders: username } }
-      );
+      Meteor.call('rides.join', { rideId: instance.state.get('selectedRide')._id });
       instance.state.set('selectedRide', Rides.find({_id: this._id}));
     }
   },
